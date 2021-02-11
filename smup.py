@@ -73,7 +73,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.transform.scale(player_img, (50, 38))
-        self.image.set_colorkey('black')
+        self.image.set_colorkey((0, 0, 0))
         self.rect = self.image.get_rect()
         self.rect = self.image.get_rect()
         self.radius = 20
@@ -147,7 +147,7 @@ class Mob(pygame.sprite.Sprite):
     # random position of enemy
         pygame.sprite.Sprite.__init__(self)
         self.image_orig = random.choice(meteor_images)
-        self.image_orig.set_colorkey('black')
+        self.image_orig.set_colorkey((0, 0, 0))
         self.image = self.image_orig.copy()
         self.rect = self.image.get_rect()
         self.radius = int(self.rect.width * .85 / 2)
@@ -184,7 +184,7 @@ class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
         self.image = bullet_img
-        self.image.set_colorkey('black')
+        self.image.set_colorkey((0, 0, 0))
         self.rect = self.image.get_rect()
         self.rect.bottom = y
         self.rect.centerx = x
@@ -201,7 +201,7 @@ class Pow(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.type = random.choice(['shield', 'gun'])
         self.image = powerup_images[self.type]
-        self.image.set_colorkey('black')
+        self.image.set_colorkey((0, 0, 0))
         self.rect = self.image.get_rect()
         self.rect.center = center
         self.speedy = 2
@@ -259,7 +259,7 @@ power_sound = pygame.mixer.Sound('win sound 1-2.wav')
 
 player_img = pygame.image.load("playerShip3_red.png").convert()
 player_mini_img = pygame.transform.scale(player_img, (25, 19))
-player_mini_img.set_colorkey('black')
+player_mini_img.set_colorkey((0, 0, 0))
 
 powerup_images = {}
 powerup_images['shield'] = pygame.image.load('shield_silver.png').convert()
@@ -275,14 +275,14 @@ powerups = pygame.sprite.Group()
 for i in range(9):
     filename = 'regularExplosion0{}.png'.format(i)
     img = pygame.image.load(filename).convert()
-    img.set_colorkey('black')
+    img.set_colorkey((0, 0, 0))
     img_lg = pygame.transform.scale(img, (75, 75))
     explosion_anim['lg'].append(img_lg)
     img_sm = pygame.transform.scale(img, (32, 32))
     explosion_anim['sm'].append(img_sm)
     filename = 'sonicExplosion0{}.png'.format(i)
     img = pygame.image.load(filename).convert()
-    img.set_colorkey('black')
+    img.set_colorkey((0, 0, 0))
     explosion_anim['player'].append(img)
 
 all_sprites = pygame.sprite.Group()
@@ -363,7 +363,7 @@ while running:
             if player.lives == 0 and not death_explosion.alive():
                 game_over = True
 
-        screen.fill('black')
+        screen.fill((0, 0, 0))
         screen.blit(background, background_rect)
         all_sprites.draw(screen)
         draw_text(screen, str(score), 18, WIDTH / 2, 10)

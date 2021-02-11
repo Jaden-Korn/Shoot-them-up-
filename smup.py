@@ -57,8 +57,8 @@ def draw_shield_bar(surf, x, y, pct):
     fill = (pct / 100) * BAR_LENGTH
     outline_rect = pygame.Rect(x, y, BAR_LENGTH, BAR_HEIGHT)
     fill_rect = pygame.Rect(x, y, fill, BAR_HEIGHT)
-    pygame.draw.rect(surf, 'green', fill_rect)
-    pygame.draw.rect(surf, 'white', outline_rect, 2)
+    pygame.draw.rect(surf, (0, 255, 0), fill_rect)
+    pygame.draw.rect(surf, (255, 255, 255), outline_rect, 2)
 
 
 def draw_lives(surf, x, y, lives, img):
